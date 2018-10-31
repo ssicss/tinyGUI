@@ -1,9 +1,7 @@
 
-
-
-/**************windowsÈë¿Úº¯Êý*************/
-int main(void);
 #include <windows.h>
+
+int main(void);
 int _stdcall WinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPTSTR lpCmdLine,
@@ -12,27 +10,49 @@ int _stdcall WinMain(HINSTANCE hInstance,
 	main();
 }
 
-
-#include "core.h"
-#include "font.h"
+#include "tgui.h"
+#include "tgui_core.h"
+#include "tgui_font.h"
 #include <stdio.h>
 
+
+#include "simulater.h"
+
+
+
+
+int Demo_PutC(__IN__ char c)
+{
+	//printf("%c", c);
+
+	return 0;
+}
+
+
+
+TGUI_COLOR Demo_ReadPixeHook(__IN__ size_t x, __IN__ size_t y)
+{
+	return 0;
+}
 int main(void)
 {
-	unsigned int i = 0;
-	unsigned int j = 0;
 
-	if(WGUI_Init() != WGUI_TRUE)
-	{
-		while(1);
-	}
+	struct TGUI_OPT_HOOK opt;
+
+	memset(&opt, 0, sizeof(struct TGUI_OPT_HOOK));
+
+	opt.TGUI_Putc = Demo_PutC;
+	opt.TGUI_InitHook =  (void *(*)(void))SimulaterInit;
+	opt.TGUI_WritePixeHook = SimulaterDrawPoint;
+	opt.TGUI_ReadPixeHook = Demo_ReadPixeHook;
 	
-	WGUI_DrawLine(10,10, 100, 150 ,WGUI_COLOR_RED);
 
-	WGUI_DrawRectangle(20,20,100,100,WGUI_COLOR_RED,WGUI_IS_FILL);
-	WGUI_DrawRectangle(120, 120, 300, 300, WGUI_COLOR_RED, WGUI_IS_NOT_FILL);
+	if(TGUI_Init(&opt) == NULL)
+	{
+		//printf(">TGUI Init err\n");
+		for(;;);
+	}
 
-	WGUI_ShowTextAt(50,120,WGUI_COLOR_RED,"aaa");
-	while (1);
+	TGUI_2DDrawLine(1,1, 20,8, TGUI_COLOR_RED);
 	
 }

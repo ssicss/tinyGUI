@@ -1,26 +1,12 @@
 
-#include "core.h"
+#include "tgui_core.h"
 
 
 char ptTGUIPrintBuf[TGUI_PRINT_BUF_LEN];
 struct TGUI_OPT_HOOK *gTGUIOpt = NULL;
 
 
-void TGUI_DrawPoint(unsigned int x, unsigned int y, TGUI_COLOR color)
-{
-	//tGUI_IFWritePointHook(x, y, color);
-}
-
-void TGUI_DrawLine(unsigned int sx, unsigned int sy, unsigned int ex, unsigned int ey,TGUI_COLOR color)
-{
-	unsigned int i=0;
-
-	for(i=sx; i<ex; i++)
-	{
-		//tGUI_IFWritePointHook(i, i*(ey-sy)/(ex-sx) + sy, color);
-	}
-}
-
+#include <stdarg.h>
 #ifdef TGUI_PRINT
 int TGUI_Printf(__IN__ char *fmt, ...)
 {
@@ -29,15 +15,18 @@ int TGUI_Printf(__IN__ char *fmt, ...)
 	size_t i = 0;
 	
 	va_start(list, fmt);
-	revl = vsprintf(ptTGUIPrintBuf, fmt, list);
+
+	revl = vsnprintf(ptTGUIPrintBuf, TGUI_PRINT_BUF_LEN, fmt, list);
+
+	
 	if(revl > 0)
 	{
-		for(i=0; i<revl; i++)
+		for(i=0; i<(size_t)revl; i++)
 		{
 			gTGUIOpt->TGUI_Putc(ptTGUIPrintBuf[i]);
 		}
 	}
-	
+
 	va_end(list);
 	return revl;
 }
@@ -69,7 +58,7 @@ void *TGUI_Init(struct TGUI_OPT_HOOK *opt)
 	{
 	
 #ifdef TGUI_PRINT
-		TGUI_Printf("TGUI_InitHook()/TGUI_InitHook()/TGUI_InitHook() not filled\n");	
+		TGUI_Printf("TGUI_InitHook()/TGUI_WritePixeHook()/TGUI_ReadPixeHook() not filled\n");	
 #endif
 		return NULL;
 	}

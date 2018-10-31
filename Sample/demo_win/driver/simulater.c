@@ -10,18 +10,16 @@ PVOID pView = NULL;
 unsigned char g_share_buf[VIEW_SIZE];
 
 
-static WGUI_STATUS WriteShare(unsigned int x, unsigned int y,const unsigned char *wbuf)
+static void WriteShare(unsigned int x, unsigned int y,const unsigned char *wbuf)
 {
 	unsigned char *tm_ptr;
 
 	tm_ptr = (unsigned char *)pView;
 
 	memcpy_s(&tm_ptr[(y*IMAGE_WIDTH + x)*3], 3, &wbuf[(y*IMAGE_WIDTH + x)*3], 3);
-
-	return WGUI_TRUE;
 }
 
-static WGUI_STATUS OpenShare(void)
+static void *OpenShare(void)
 {
 	hMapFile = OpenFileMapping(
 		FILE_MAP_WRITE,          // Read access  
@@ -29,10 +27,11 @@ static WGUI_STATUS OpenShare(void)
 		FULL_MAP_NAME           // File mapping name   
 	);
 
-	if(hMapFile == NULL)
-	{
-		return WGUI_FALSE;
-	}
+	int res = GetLastError();
+
+	if(!hMapFile)
+		return NULL;
+
 
 
 	pView = MapViewOfFile(
@@ -42,25 +41,21 @@ static WGUI_STATUS OpenShare(void)
 		VIEW_OFFSET,            // Low-order DWORD of the file offset   
 		VIEW_SIZE               // The number of bytes to map to view  
 	);
-	if (pView == NULL)
-	{
-		return WGUI_FALSE;
-	}
 
+	return pView;
 
-	return WGUI_TRUE;
 }
 
 
 
-WGUI_STATUS SimulaterInit(void)
+void *SimulaterInit(void)
 {
 	memset(g_share_buf, 0, VIEW_SIZE);
 	return OpenShare();
 }
 
 
-void SimulaterDrawPoint(unsigned int x, unsigned int y, WGUI_COLOR color)
+void SimulaterDrawPoint(unsigned int x, unsigned int y, TGUI_COLOR color)
 {
 
 	g_share_buf[(y*IMAGE_WIDTH + x)*3] = (unsigned char)((color & (0xff<<16))>>16);

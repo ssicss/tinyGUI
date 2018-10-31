@@ -1,12 +1,12 @@
-#include "font.h"
+#include "tgui_font.h"
 
-struct WGUI_FONT gWGUI_Font={
+struct TGUI_FONT gWGUI_Font={
 	&font_0812_sum[0],
 };
 
 
 
-static _FontDrawChar(unsigned int x, unsigned int y, WGUI_COLOR color, const char ch)
+static _FontDrawChar(unsigned int x, unsigned int y, TGUI_COLOR color, const char ch)
 {
 	unsigned int xdst = 0;
 	unsigned int ydst = 0;
@@ -26,9 +26,9 @@ static _FontDrawChar(unsigned int x, unsigned int y, WGUI_COLOR color, const cha
 		{
 			if(((gWGUI_Font.finfo->db[j-y])&(1<<(i-x))) == 0)
 			{
-				WGUI_DrawPoint(i,j,WGUI_COLOR_RED);
+				//WGUI_DrawPoint(i,j,TGUI_COLOR_RED);
 			}else{
-				WGUI_DrawPoint(i,j,WGUI_COLOR_BLUE);
+				//WGUI_DrawPoint(i,j,TGUI_COLOR_BLUE);
 			}
 			
 		}
@@ -37,7 +37,7 @@ static _FontDrawChar(unsigned int x, unsigned int y, WGUI_COLOR color, const cha
 	
 }
 
-void WGUI_ShowTextAt(unsigned int x, unsigned int y, WGUI_COLOR color, const char *str)
+void WGUI_ShowTextAt(unsigned int x, unsigned int y, TGUI_COLOR color, const char *str)
 {
 	char * tmp_str = (char *)str;
 

@@ -1,5 +1,7 @@
-#ifndef _WGUI_H
-#define _WGUI_H
+#ifndef _TGUI_H
+#define _TGUI_H
+
+#include  "tgui_type.h"
 
 //常用颜色定义
 #define TGUI_COLOR_WHITE   (0xffff)
@@ -13,6 +15,19 @@ extern struct TGUI_OPT_HOOK *gTGUIOpt;
 
 
 void *TGUI_Init(struct TGUI_OPT_HOOK *opt);
+
+
+
+/***********************2D图形库******************************/
+void TGUI_2DDrawPixe(__IN__ size_t x, 
+							__IN__ size_t y, 
+							__IN__ TGUI_COLOR color);
+
+void TGUI_2DDrawLine(__IN__ size_t sx, 
+						  __IN__ size_t sy, 
+						  __IN__ size_t ex, 
+						  __IN__ size_t ey,
+						  __IN__ TGUI_COLOR color);
 
 
 #endif

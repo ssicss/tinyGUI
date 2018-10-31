@@ -1,0 +1,35 @@
+Graphics2D/libtgui_a-tgui_base.o: Graphics2D/tgui_base.c \
+ /usr/include/stdc-predef.h ../../Source/inc/tgui_base.h \
+ ../../Source/inc/tgui.h ../../Source/inc/tgui_type.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stdbool.h \
+ ../../Source/inc/tgui_config.h /usr/include/assert.h \
+ /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h
+
+/usr/include/stdc-predef.h:
+
+../../Source/inc/tgui_base.h:
+
+../../Source/inc/tgui.h:
+
+../../Source/inc/tgui_type.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stddef.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include/stdbool.h:
+
+../../Source/inc/tgui_config.h:
+
+/usr/include/assert.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:

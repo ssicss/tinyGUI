@@ -1,5 +1,5 @@
 
-#include "font.h"
+#include "tgui_font.h"
 
 /* char: A   code:0x0041 */
 const unsigned char acFontHZ_0041[12] = { 
@@ -18,7 +18,7 @@ const unsigned char acFontHZ_0041[12] = {
 };
 
 
-struct WGUI_FONT_INFO font_0812_sum[1] = 
+struct TGUI_FONT_INFO font_0812_sum[1] = 
 {
 	{0x41, 8,12, acFontHZ_0041},
 };

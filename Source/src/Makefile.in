@@ -106,7 +106,8 @@ am__v_AR_1 =
 libtgui_a_AR = $(AR) $(ARFLAGS)
 libtgui_a_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am_libtgui_a_OBJECTS = Core/libtgui_a-core.$(OBJEXT)
+am_libtgui_a_OBJECTS = Core/libtgui_a-tgui_core.$(OBJEXT) \
+	Graphics2D/libtgui_a-tgui_base.$(OBJEXT)
 libtgui_a_OBJECTS = $(am_libtgui_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -123,7 +124,8 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = Core/$(DEPDIR)/libtgui_a-core.Po
+am__depfiles_remade = Core/$(DEPDIR)/libtgui_a-tgui_core.Po \
+	Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -256,7 +258,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign subdir-objects
 noinst_LIBRARIES = libtgui.a
-libtgui_a_SOURCES = Core/core.c
+libtgui_a_SOURCES = Core/tgui_core.c Graphics2D/tgui_base.c
 libtgui_a_CPPFLAGS = -I../../Source/inc/ -g
 all: all-am
 
@@ -300,8 +302,16 @@ Core/$(am__dirstamp):
 Core/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) Core/$(DEPDIR)
 	@: > Core/$(DEPDIR)/$(am__dirstamp)
-Core/libtgui_a-core.$(OBJEXT): Core/$(am__dirstamp) \
+Core/libtgui_a-tgui_core.$(OBJEXT): Core/$(am__dirstamp) \
 	Core/$(DEPDIR)/$(am__dirstamp)
+Graphics2D/$(am__dirstamp):
+	@$(MKDIR_P) Graphics2D
+	@: > Graphics2D/$(am__dirstamp)
+Graphics2D/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) Graphics2D/$(DEPDIR)
+	@: > Graphics2D/$(DEPDIR)/$(am__dirstamp)
+Graphics2D/libtgui_a-tgui_base.$(OBJEXT): Graphics2D/$(am__dirstamp) \
+	Graphics2D/$(DEPDIR)/$(am__dirstamp)
 
 libtgui.a: $(libtgui_a_OBJECTS) $(libtgui_a_DEPENDENCIES) $(EXTRA_libtgui_a_DEPENDENCIES) 
 	$(AM_V_at)-rm -f libtgui.a
@@ -311,11 +321,13 @@ libtgui.a: $(libtgui_a_OBJECTS) $(libtgui_a_DEPENDENCIES) $(EXTRA_libtgui_a_DEPE
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f Core/*.$(OBJEXT)
+	-rm -f Graphics2D/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@Core/$(DEPDIR)/libtgui_a-core.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@Core/$(DEPDIR)/libtgui_a-tgui_core.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -339,19 +351,33 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-Core/libtgui_a-core.o: Core/core.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT Core/libtgui_a-core.o -MD -MP -MF Core/$(DEPDIR)/libtgui_a-core.Tpo -c -o Core/libtgui_a-core.o `test -f 'Core/core.c' || echo '$(srcdir)/'`Core/core.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) Core/$(DEPDIR)/libtgui_a-core.Tpo Core/$(DEPDIR)/libtgui_a-core.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='Core/core.c' object='Core/libtgui_a-core.o' libtool=no @AMDEPBACKSLASH@
+Core/libtgui_a-tgui_core.o: Core/tgui_core.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT Core/libtgui_a-tgui_core.o -MD -MP -MF Core/$(DEPDIR)/libtgui_a-tgui_core.Tpo -c -o Core/libtgui_a-tgui_core.o `test -f 'Core/tgui_core.c' || echo '$(srcdir)/'`Core/tgui_core.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) Core/$(DEPDIR)/libtgui_a-tgui_core.Tpo Core/$(DEPDIR)/libtgui_a-tgui_core.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='Core/tgui_core.c' object='Core/libtgui_a-tgui_core.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Core/libtgui_a-core.o `test -f 'Core/core.c' || echo '$(srcdir)/'`Core/core.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Core/libtgui_a-tgui_core.o `test -f 'Core/tgui_core.c' || echo '$(srcdir)/'`Core/tgui_core.c
 
-Core/libtgui_a-core.obj: Core/core.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT Core/libtgui_a-core.obj -MD -MP -MF Core/$(DEPDIR)/libtgui_a-core.Tpo -c -o Core/libtgui_a-core.obj `if test -f 'Core/core.c'; then $(CYGPATH_W) 'Core/core.c'; else $(CYGPATH_W) '$(srcdir)/Core/core.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) Core/$(DEPDIR)/libtgui_a-core.Tpo Core/$(DEPDIR)/libtgui_a-core.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='Core/core.c' object='Core/libtgui_a-core.obj' libtool=no @AMDEPBACKSLASH@
+Core/libtgui_a-tgui_core.obj: Core/tgui_core.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT Core/libtgui_a-tgui_core.obj -MD -MP -MF Core/$(DEPDIR)/libtgui_a-tgui_core.Tpo -c -o Core/libtgui_a-tgui_core.obj `if test -f 'Core/tgui_core.c'; then $(CYGPATH_W) 'Core/tgui_core.c'; else $(CYGPATH_W) '$(srcdir)/Core/tgui_core.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) Core/$(DEPDIR)/libtgui_a-tgui_core.Tpo Core/$(DEPDIR)/libtgui_a-tgui_core.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='Core/tgui_core.c' object='Core/libtgui_a-tgui_core.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Core/libtgui_a-core.obj `if test -f 'Core/core.c'; then $(CYGPATH_W) 'Core/core.c'; else $(CYGPATH_W) '$(srcdir)/Core/core.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Core/libtgui_a-tgui_core.obj `if test -f 'Core/tgui_core.c'; then $(CYGPATH_W) 'Core/tgui_core.c'; else $(CYGPATH_W) '$(srcdir)/Core/tgui_core.c'; fi`
+
+Graphics2D/libtgui_a-tgui_base.o: Graphics2D/tgui_base.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT Graphics2D/libtgui_a-tgui_base.o -MD -MP -MF Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Tpo -c -o Graphics2D/libtgui_a-tgui_base.o `test -f 'Graphics2D/tgui_base.c' || echo '$(srcdir)/'`Graphics2D/tgui_base.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Tpo Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='Graphics2D/tgui_base.c' object='Graphics2D/libtgui_a-tgui_base.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Graphics2D/libtgui_a-tgui_base.o `test -f 'Graphics2D/tgui_base.c' || echo '$(srcdir)/'`Graphics2D/tgui_base.c
+
+Graphics2D/libtgui_a-tgui_base.obj: Graphics2D/tgui_base.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT Graphics2D/libtgui_a-tgui_base.obj -MD -MP -MF Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Tpo -c -o Graphics2D/libtgui_a-tgui_base.obj `if test -f 'Graphics2D/tgui_base.c'; then $(CYGPATH_W) 'Graphics2D/tgui_base.c'; else $(CYGPATH_W) '$(srcdir)/Graphics2D/tgui_base.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Tpo Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='Graphics2D/tgui_base.c' object='Graphics2D/libtgui_a-tgui_base.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libtgui_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Graphics2D/libtgui_a-tgui_base.obj `if test -f 'Graphics2D/tgui_base.c'; then $(CYGPATH_W) 'Graphics2D/tgui_base.c'; else $(CYGPATH_W) '$(srcdir)/Graphics2D/tgui_base.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -470,6 +496,8 @@ distclean-generic:
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
 	-rm -f Core/$(DEPDIR)/$(am__dirstamp)
 	-rm -f Core/$(am__dirstamp)
+	-rm -f Graphics2D/$(DEPDIR)/$(am__dirstamp)
+	-rm -f Graphics2D/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -479,7 +507,8 @@ clean: clean-am
 clean-am: clean-generic clean-noinstLIBRARIES mostlyclean-am
 
 distclean: distclean-am
-		-rm -f Core/$(DEPDIR)/libtgui_a-core.Po
+		-rm -f Core/$(DEPDIR)/libtgui_a-tgui_core.Po
+	-rm -f Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -525,7 +554,8 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f Core/$(DEPDIR)/libtgui_a-core.Po
+		-rm -f Core/$(DEPDIR)/libtgui_a-tgui_core.Po
+	-rm -f Graphics2D/$(DEPDIR)/libtgui_a-tgui_base.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

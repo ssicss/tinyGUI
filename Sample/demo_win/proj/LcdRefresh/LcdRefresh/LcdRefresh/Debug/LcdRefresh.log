@@ -1,4 +1,9 @@
-﻿  font.c
-f:\模拟器\wgui\source\src\font\font.c(27): warning C4013: 'WGUI_DrawPoint' undefined; assuming extern returning int
-  LcdRefresh.vcxproj -> F:\模拟器\wGUI\Sample\vs2015\LcdRefresh\LcdRefresh\Debug\LcdRefresh.exe
-  LcdRefresh.vcxproj -> F:\模拟器\wGUI\Sample\vs2015\LcdRefresh\LcdRefresh\Debug\LcdRefresh.pdb (Full PDB)
+﻿  Main.c
+e:\tinygui&simulator\tinygui\source\inc\tgui.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\tinygui&simulator\tinygui\sample\demo_win\proj\lcdrefresh\lcdrefresh\lcdrefresh\main.c(56): warning C4305: “函数”: 从“int”到“const TGUI_COLOR”截断
+  simulater.c
+e:\tinygui&simulator\tinygui\source\inc\tgui.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\tinygui&simulator\tinygui\sample\demo_win\driver\simulater.c(28): warning C4133: “函数”: 从“unsigned short [10]”到“LPCSTR”的类型不兼容
+  正在生成代码...
+  LcdRefresh.vcxproj -> E:\tinyGUI&Simulator\tinyGUI\Sample\demo_win\proj\LcdRefresh\LcdRefresh\Debug\LcdRefresh.exe
+  LcdRefresh.vcxproj -> E:\tinyGUI&Simulator\tinyGUI\Sample\demo_win\proj\LcdRefresh\LcdRefresh\Debug\LcdRefresh.pdb (Full PDB)

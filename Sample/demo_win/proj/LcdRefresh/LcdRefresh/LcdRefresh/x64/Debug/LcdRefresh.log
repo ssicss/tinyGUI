@@ -1,0 +1,18 @@
+﻿  Main.c
+e:\tinygui&simulator\tinygui\sample\demo_win\proj\lcdrefresh\lcdrefresh\lcdrefresh\main.c(9): warning C4028: 形参 3 与声明不同
+e:\tinygui&simulator\tinygui\sample\demo_win\proj\lcdrefresh\lcdrefresh\lcdrefresh\main.c(10): warning C4013: “main”未定义；假设外部返回 int
+e:\tinygui&simulator\tinygui\source\inc\tgui.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  simulater.c
+e:\tinygui&simulator\tinygui\source\inc\tgui.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\tinygui&simulator\tinygui\sample\demo_win\driver\simulater.h(19): error C2061: 语法错误: 标识符“SimulaterInit”
+e:\tinygui&simulator\tinygui\sample\demo_win\driver\simulater.h(19): error C2059: 语法错误:“;”
+e:\tinygui&simulator\tinygui\sample\demo_win\driver\simulater.h(19): error C2059: 语法错误:“<parameter-list>”
+  tgui_font0812.c
+e:\tinygui&simulator\tinygui\source\inc\tgui.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\tinygui&simulator\tinygui\source\src\font\tgui_font0812.c(21): error C2371: “font_0812_sum”: 重定义；不同的基类型
+  e:\tinygui&simulator\tinygui\source\inc\tgui_font.h(20): note: 参见“font_0812_sum”的声明
+e:\tinygui&simulator\tinygui\source\src\font\tgui_font0812.c(21): error C2079: “font_0812_sum”使用未定义的 struct“WGUI_FONT_INFO”
+e:\tinygui&simulator\tinygui\source\src\font\tgui_font0812.c(24): fatal error C1903: 无法从以前的错误中恢复；正在停止编译
+  “D:\VS\VC\bin\x86_amd64\CL.exe”中的内部编译器错误
+    请选择 Visual C++ 
+  “帮助”菜单上的“技术支持”命令，或打开技术支持帮助文件来获得详细信息
