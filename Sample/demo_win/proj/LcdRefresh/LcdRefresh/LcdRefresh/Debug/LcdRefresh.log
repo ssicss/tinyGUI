@@ -1,0 +1,4 @@
+﻿  font.c
+f:\模拟器\wgui\source\src\font\font.c(27): warning C4013: 'WGUI_DrawPoint' undefined; assuming extern returning int
+  LcdRefresh.vcxproj -> F:\模拟器\wGUI\Sample\vs2015\LcdRefresh\LcdRefresh\Debug\LcdRefresh.exe
+  LcdRefresh.vcxproj -> F:\模拟器\wGUI\Sample\vs2015\LcdRefresh\LcdRefresh\Debug\LcdRefresh.pdb (Full PDB)
